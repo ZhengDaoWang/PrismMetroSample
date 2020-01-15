@@ -43,7 +43,8 @@ namespace PrismMetroSample.PatientModule.ViewModels
             _medicineSerivce = medicineSerivce;
             _ea = ea;
             _ea.GetEvent<PatientSentEvent>().Subscribe(PatientMessageReceived);
-            _ea.GetEvent<MedicineSentEvent>().Subscribe(MedicineMessageReceived);
+            _ea.GetEvent<MedicineSentEvent>().Subscribe(MedicineMessageReceived,ThreadOption.PublisherThread,false,
+                medicine=>medicine.Name=="当归"|| medicine.Name== "琼浆玉露");
         }
 
         /// <summary>
