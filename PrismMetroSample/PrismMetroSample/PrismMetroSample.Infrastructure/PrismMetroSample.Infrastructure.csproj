@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Fonts\iconfont.ttf" />
+    <None Remove="Assets\Photos\Home, homepage, menu.png" />
     <None Remove="Assets\Photos\按钮.png" />
   </ItemGroup>
 
@@ -18,6 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Fonts\iconfont.ttf" />
+    <Resource Include="Assets\Photos\Home, homepage, menu.png" />
     <Resource Include="Assets\Photos\按钮.png" />
   </ItemGroup>
 

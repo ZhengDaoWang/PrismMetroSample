@@ -15,6 +15,7 @@
     <ProjectReference Include="..\PrismMetroSample.Infrastructure\PrismMetroSample.Infrastructure.csproj" />
     <ProjectReference Include="..\PrismMetroSample.MedicineModule\PrismMetroSample.MedicineModule.csproj" />
     <ProjectReference Include="..\PrismMetroSample.PatientModule\PrismMetroSample.PatientModule.csproj" />
+    <ProjectReference Include="..\PrismMetroSample.Styling\PrismMetroSample.Styling.csproj" />
   </ItemGroup>
 
 </Project>

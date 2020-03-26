@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrismMetroSample.MedicineMo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrismMetroSample.PatientModule", "PrismMetroSample.PatientModule\PrismMetroSample.PatientModule.csproj", "{C68DF440-8D86-4500-B19B-E61349EE5921}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismMetroSample.Infrastructure", "PrismMetroSample.Infrastructure\PrismMetroSample.Infrastructure.csproj", "{DDF0DD3B-97D4-485B-BD89-F5D4358B4626}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrismMetroSample.Infrastructure", "PrismMetroSample.Infrastructure\PrismMetroSample.Infrastructure.csproj", "{DDF0DD3B-97D4-485B-BD89-F5D4358B4626}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismMetroSample.Styling", "PrismMetroSample.Styling\PrismMetroSample.Styling.csproj", "{1EFA75A2-B4F7-43D7-B415-4BB3D1EFE040}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{DDF0DD3B-97D4-485B-BD89-F5D4358B4626}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDF0DD3B-97D4-485B-BD89-F5D4358B4626}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDF0DD3B-97D4-485B-BD89-F5D4358B4626}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EFA75A2-B4F7-43D7-B415-4BB3D1EFE040}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EFA75A2-B4F7-43D7-B415-4BB3D1EFE040}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EFA75A2-B4F7-43D7-B415-4BB3D1EFE040}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EFA75A2-B4F7-43D7-B415-4BB3D1EFE040}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,6 +2,7 @@
 using MahApps.Metro.Controls;
 using Prism.Regions;
 using PrismMetroSample.Infrastructure.Constants;
+using CommonServiceLocator;
 
 namespace PrismMetroSample.Shell.Views
 {
@@ -10,9 +11,10 @@ namespace PrismMetroSample.Shell.Views
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        public MainWindow(IRegionManager regionManager)
+        public MainWindow()
         {
             InitializeComponent();
+            var regionManager= ServiceLocator.Current.GetInstance<IRegionManager>();
             if (regionManager != null)
             {
                 SetRegionManager(regionManager, this.flyoutsControlRegion, RegionNames.FlyoutRegion);

@@ -6,6 +6,7 @@ using System;
 using System.Windows;
 using PrismMetroSample.Infrastructure.Services;
 using PrismMetroSample.Infrastructure;
+using PrismMetroSample.Shell.Views.Login;
 
 namespace PrismMetroSample.Shell
 {
@@ -16,17 +17,22 @@ namespace PrismMetroSample.Shell
     {
         protected override Window CreateShell()
         {
-            return Container.Resolve<MainWindow>();
+            return Container.Resolve<LoginWindow>();
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.Register<IMedicineSerivce, MedicineSerivce>();
             containerRegistry.Register<IPatientService, PatientService>();
+            containerRegistry.Register<IUserService, UserService>();
 
             //注册全局命令
             containerRegistry.RegisterSingleton<IApplicationCommands, ApplicationCommands>();
             containerRegistry.RegisterInstance<IFlyoutService>(Container.Resolve<FlyoutService>());
+
+            //注册导航
+            containerRegistry.RegisterForNavigation<LoginMainContent>();
+            containerRegistry.RegisterForNavigation<CreateAccount>();
         }
 
         //protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
