@@ -4,6 +4,7 @@ using Prism.Regions;
 using PrismMetroSample.MedicineModule.Views;
 using PrismMetroSample.Infrastructure.Constants;
 using System;
+using System.Windows.Controls;
 
 namespace PrismMetroSample.MedicineModule
 {
@@ -23,6 +24,7 @@ namespace PrismMetroSample.MedicineModule
 
             //rightWindowCommandsRegion
             regionManager.RegisterViewWithRegion(RegionNames.ShowSearchPatientRegion, typeof(ShowSearchPatient));
+
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)

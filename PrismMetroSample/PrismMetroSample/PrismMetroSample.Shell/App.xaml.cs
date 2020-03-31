@@ -7,6 +7,9 @@ using System.Windows;
 using PrismMetroSample.Infrastructure.Services;
 using PrismMetroSample.Infrastructure;
 using PrismMetroSample.Shell.Views.Login;
+using Prism.Regions;
+using System.Windows.Controls.Primitives;
+using PrismMetroSample.Infrastructure.CustomerRegionAdapters;
 
 namespace PrismMetroSample.Shell
 {
@@ -17,7 +20,7 @@ namespace PrismMetroSample.Shell
     {
         protected override Window CreateShell()
         {
-            return Container.Resolve<LoginWindow>();
+            return Container.Resolve<MainWindow>();
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -29,6 +32,7 @@ namespace PrismMetroSample.Shell
             //注册全局命令
             containerRegistry.RegisterSingleton<IApplicationCommands, ApplicationCommands>();
             containerRegistry.RegisterInstance<IFlyoutService>(Container.Resolve<FlyoutService>());
+
 
             //注册导航
             containerRegistry.RegisterForNavigation<LoginMainContent>();
@@ -47,6 +51,12 @@ namespace PrismMetroSample.Shell
         //    });
 
         //}
+
+        protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
+        {
+            base.ConfigureRegionAdapterMappings(regionAdapterMappings);
+            regionAdapterMappings.RegisterMapping(typeof(UniformGrid), Container.Resolve<UniformGridRegionAdapter>());
+        }
 
         protected override IModuleCatalog CreateModuleCatalog()
         {

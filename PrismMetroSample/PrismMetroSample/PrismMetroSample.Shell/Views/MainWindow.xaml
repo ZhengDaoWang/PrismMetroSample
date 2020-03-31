@@ -5,7 +5,13 @@
              xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
               WindowStartupLocation="CenterScreen"
              GlowBrush="{DynamicResource AccentColorBrush}"
-             prism:ViewModelLocator.AutoWireViewModel="True" Height="600" Width="600" Title="MainWindow">
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             prism:ViewModelLocator.AutoWireViewModel="True" Height="800" Width="800" Title="MainWindow">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadingCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <metro:MetroWindow.Flyouts>
         <metro:FlyoutsControl x:Name="flyoutsControlRegion" />
     </metro:MetroWindow.Flyouts>
@@ -27,7 +33,16 @@
                     <Label Content="Home" FontSize="35" FontWeight="Bold"/>
 
                 </StackPanel>
-                <Button Grid.Row="1"  Content="Load MedicineModule" FontSize="25"  Margin="5" Command="{Binding LoadPatientModuleCommand}"/>
+                <StackPanel Grid.Row="1">
+                    <Button  Content="Load MedicineModule" FontSize="25"  Margin="5" Command="{Binding LoadMedicineModuleCommand}"/>
+                    <UniformGrid Margin="5" prism:RegionManager.RegionName="UniformContentRegion" Columns="2">
+                        <Button Content="ActivePaientList" Margin="5" Command="{Binding ActivePaientListCommand}"/>
+                        <Button Content="DeactivePaientList" Margin="5" Command="{Binding DeactivePaientListCommand}"/>
+                        <Button Content="ActiveMedicineList" Margin="5" Command="{Binding ActiveMedicineListCommand}"/>
+                        <Button Content="DeactiveMedicineList" Margin="5" Command="{Binding DeactiveMedicineListCommand}"/>
+                    </UniformGrid>
+                </StackPanel>
+
                 <ContentControl Grid.Row="2" prism:RegionManager.RegionName="PatientListRegion" Margin="10"/>
                 <ContentControl Grid.Row="3" prism:RegionManager.RegionName="MedicineMainContentRegion"/>
             </Grid>

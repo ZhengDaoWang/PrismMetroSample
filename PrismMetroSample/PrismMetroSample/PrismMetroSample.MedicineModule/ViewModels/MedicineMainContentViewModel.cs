@@ -1,27 +1,49 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
+﻿using Prism.Mvvm;
 using PrismMetroSample.Infrastructure.Models;
 using PrismMetroSample.Infrastructure.Services;
 using System.Collections.ObjectModel;
-using System.Collections.Generic;
-using System.Linq;
 using Prism.Events;
 using PrismMetroSample.Infrastructure.Events;
 using System;
+using Prism;
+using System.Windows;
 
 namespace PrismMetroSample.MedicineModule.ViewModels
 {
-    public class MedicineMainContentViewModel : BindableBase
+    public class MedicineMainContentViewModel : BindableBase,IActiveAware
     {
         IMedicineSerivce _medicineSerivce;
         IEventAggregator _ea;
 
         private ObservableCollection<Medicine> _allMedicines;
+
+        public event EventHandler IsActiveChanged;
+
         public ObservableCollection<Medicine> AllMedicines
         {
             get { return _allMedicines; }
             set { SetProperty(ref _allMedicines, value); }
         }
+
+        bool _isActive;
+        public bool IsActive
+        {
+            get { return _isActive; }
+            set
+            {
+                _isActive = value;
+                if (_isActive)
+                {
+                    MessageBox.Show("视图被激活了");
+                }
+                else
+                {
+                    MessageBox.Show("视图失效了");
+                }
+                IsActiveChanged?.Invoke(this, new EventArgs());
+            }
+        }
+
         public MedicineMainContentViewModel(IMedicineSerivce medicineSerivce,IEventAggregator ea)
         {
             _medicineSerivce = medicineSerivce;

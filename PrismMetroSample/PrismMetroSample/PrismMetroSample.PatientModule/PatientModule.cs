@@ -17,7 +17,7 @@ namespace PrismMetroSample.PatientModule
             var regionManager = containerProvider.Resolve<IRegionManager>();
 
             //PatientList
-            regionManager.RegisterViewWithRegion(RegionNames.PatientListRegion, typeof(PatientList));
+            //regionManager.RegisterViewWithRegion(RegionNames.PatientListRegion, typeof(PatientList));
             //PatientDetail-Flyout
             regionManager.RegisterViewWithRegion(RegionNames.FlyoutRegion, typeof(PatientDetail));
 

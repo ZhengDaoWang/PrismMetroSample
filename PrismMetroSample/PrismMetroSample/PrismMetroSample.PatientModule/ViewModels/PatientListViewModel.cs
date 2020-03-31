@@ -10,12 +10,12 @@ using PrismMetroSample.Infrastructure;
 using Prism.Events;
 using PrismMetroSample.Infrastructure.Events;
 using PrismMetroSample.Infrastructure.Constants;
+using PrismMetroSample.PatientModule.Views;
 
 namespace PrismMetroSample.PatientModule.ViewModels
 {
     public class PatientListViewModel : BindableBase
     {
-
         private IApplicationCommands _applicationCommands;
         public IApplicationCommands ApplicationCommands
         {
@@ -35,8 +35,10 @@ namespace PrismMetroSample.PatientModule.ViewModels
             _mouseDoubleClickCommand ?? (_mouseDoubleClickCommand = new DelegateCommand<Patient>(ExecuteMouseDoubleClickCommand));
 
         IEventAggregator _ea;
-
+        private readonly IRegionManager _regionManager;
         IPatientService _patientService;
+        private IRegion _region;
+        private PatientList _patientListView;
 
         /// <summary>
         /// 构造函数
