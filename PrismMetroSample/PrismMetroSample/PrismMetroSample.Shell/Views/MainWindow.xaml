@@ -6,6 +6,8 @@
               WindowStartupLocation="CenterScreen"
              GlowBrush="{DynamicResource AccentColorBrush}"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+              xmlns:region="clr-namespace:PrismMetroSample.Infrastructure.Constants;assembly=PrismMetroSample.Infrastructure"
+               prism:RegionManager.RegionManager="{Binding RegionMannager}"    
              prism:ViewModelLocator.AutoWireViewModel="True" Height="800" Width="800" Title="MainWindow">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
@@ -35,7 +37,7 @@
                 </StackPanel>
                 <StackPanel Grid.Row="1">
                     <Button  Content="Load MedicineModule" FontSize="25"  Margin="5" Command="{Binding LoadMedicineModuleCommand}"/>
-                    <UniformGrid Margin="5" prism:RegionManager.RegionName="UniformContentRegion" Columns="2">
+                    <UniformGrid Margin="5" prism:RegionManager.RegionName="{x:Static region:RegionNames.UniformContentRegion}" Columns="2">
                         <Button Content="ActivePaientList" Margin="5" Command="{Binding ActivePaientListCommand}"/>
                         <Button Content="DeactivePaientList" Margin="5" Command="{Binding DeactivePaientListCommand}"/>
                         <Button Content="ActiveMedicineList" Margin="5" Command="{Binding ActiveMedicineListCommand}"/>
@@ -43,8 +45,8 @@
                     </UniformGrid>
                 </StackPanel>
 
-                <ContentControl Grid.Row="2" prism:RegionManager.RegionName="PatientListRegion" Margin="10"/>
-                <ContentControl Grid.Row="3" prism:RegionManager.RegionName="MedicineMainContentRegion"/>
+                <ContentControl x:Name="patientListRegion" Grid.Row="2" prism:RegionManager.RegionName="{x:Static region:RegionNames.PatientListRegion}" Margin="10"/>
+                <ContentControl x:Name="medicineMainContentRegion" Grid.Row="3" prism:RegionManager.RegionName="{x:Static region:RegionNames.MedicineMainContentRegion}"/>
             </Grid>
         </Grid>
     </metro:MetroContentControl>

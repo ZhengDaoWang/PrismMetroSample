@@ -5,16 +5,47 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PrismMetroSample.Shell.Views.Login"
              mc:Ignorable="d" 
+             xmlns:conveter="clr-namespace:PrismMetroSample.Infrastructure.Converters;assembly=PrismMetroSample.Infrastructure"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              d:DesignHeight="600" d:DesignWidth="400" prism:ViewModelLocator.AutoWireViewModel="True">
+    <UserControl.Resources>
+        <conveter:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+    </UserControl.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger>
+            <i:InvokeCommandAction Command="{Binding LoadingCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="1.5*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Prism For WPF" Foreground="#3F487F" FontSize="25"  Margin="20,0,20,0" VerticalAlignment="Center" FontWeight="Bold"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Width="30" Height="30" HorizontalAlignment="Right" Text="&#xe624;" FontWeight="Bold" FontFamily="pack://application:,,,/PrismMetroSample.Infrastructure;Component/Assets/Fonts/#iconfont" FontSize="30" Margin="10" Visibility="{Binding IsCanExcute,Converter={StaticResource boolToVisibilityConverter}}">
+                     <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding GoForwardCommand}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#F9F9F9"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <TextBlock Grid.Row="1" Text="Prism For WPF" Foreground="#3F487F" FontSize="25"  Margin="20,0,20,0" VerticalAlignment="Center" FontWeight="Bold"/>
+        </Grid>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -28,7 +59,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock Text="LoginId" Margin="20,0,20,0" Foreground="#B6B9BC"/>
                 <Border Height="50" Grid.Row="1" BorderBrush="#F9F9F9" BorderThickness="2" CornerRadius="15" Margin="20,5,20,5">
-                    <TextBox Text="{Binding CurrentUser.LoginId}" VerticalAlignment="Center" BorderThickness="0" Background="Transparent" />
+                    <TextBox Text="{Binding CurrentUser.LoginId,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" BorderThickness="0" Background="Transparent" />
                 </Border>
             </Grid>
             <Grid Grid.Row="1">

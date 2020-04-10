@@ -18,7 +18,6 @@ namespace PrismMetroSample.Shell.ViewModels
         #region Fields
 
         private IModuleManager _moduleManager;
-        private IRegionManager _regionManager;
         private IRegion _paientListRegion;
         private IRegion _medicineListRegion;
         private PatientList _patientListView;
@@ -27,6 +26,8 @@ namespace PrismMetroSample.Shell.ViewModels
         #endregion
 
         #region Properties
+
+        public IRegionManager RegionMannager { get; }
 
         private bool _isCanExcute = false;
         public bool IsCanExcute
@@ -66,28 +67,27 @@ namespace PrismMetroSample.Shell.ViewModels
 
         #endregion
 
-        public MainWindowViewModel(IModuleManager moduleManager)
+        public MainWindowViewModel(IModuleManager moduleManager,IRegionManager regionManager)
         {
             _moduleManager = moduleManager;
-            
+            RegionMannager = regionManager;
             _moduleManager.LoadModuleCompleted += _moduleManager_LoadModuleCompleted;
         }
 
         void ExecuteLoadingCommand()
         {
-            _regionManager = CommonServiceLocator.ServiceLocator.Current.GetInstance<IRegionManager>();
 
-            _paientListRegion = _regionManager.Regions[RegionNames.PatientListRegion];
+            _paientListRegion = RegionMannager.Regions[RegionNames.PatientListRegion];
             _patientListView = CommonServiceLocator.ServiceLocator.Current.GetInstance<PatientList>();
             _paientListRegion.Add(_patientListView);
 
-            var uniformContentRegion = _regionManager.Regions["UniformContentRegion"];
+            var uniformContentRegion = RegionMannager.Regions["UniformContentRegion"];
             var regionAdapterView1 = CommonServiceLocator.ServiceLocator.Current.GetInstance<RegionAdapterView1>();
             uniformContentRegion.Add(regionAdapterView1);
             var regionAdapterView2 = CommonServiceLocator.ServiceLocator.Current.GetInstance<RegionAdapterView2>();
             uniformContentRegion.Add(regionAdapterView2); 
 
-            _medicineListRegion = _regionManager.Regions[RegionNames.MedicineMainContentRegion];
+            _medicineListRegion = RegionMannager.Regions[RegionNames.MedicineMainContentRegion];
         }
 
 

@@ -26,7 +26,7 @@
             <TextBlock Width="30" Height="30" HorizontalAlignment="Left" Text="&#xe60d;" FontWeight="Bold" FontFamily="pack://application:,,,/PrismMetroSample.Infrastructure;Component/Assets/Fonts/#iconfont" FontSize="30" Margin="10">
                                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonDown">
-                            <i:InvokeCommandAction Command="{Binding LoginMainContentCommand}"/>
+                            <i:InvokeCommandAction Command="{Binding GoBackCommand}"/>
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 <TextBlock.Style>

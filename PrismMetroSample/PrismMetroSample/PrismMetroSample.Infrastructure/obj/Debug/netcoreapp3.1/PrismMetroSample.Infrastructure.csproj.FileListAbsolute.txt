@@ -6,4 +6,3 @@ C:\Users\11019\Documents\MyProject\PrismMetroSample\PrismMetroSample\PrismMetroS
 C:\Users\11019\Documents\MyProject\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Infrastructure\obj\Debug\netcoreapp3.1\PrismMetroSample.Infrastructure.AssemblyInfo.cs
 C:\Users\11019\Documents\MyProject\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Infrastructure\obj\Debug\netcoreapp3.1\PrismMetroSample.Infrastructure.dll
 C:\Users\11019\Documents\MyProject\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Infrastructure\obj\Debug\netcoreapp3.1\PrismMetroSample.Infrastructure.pdb
-C:\Users\11019\Documents\MyProject\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Infrastructure\obj\Debug\netcoreapp3.1\PrismMetroSample.Infrastructure.csprojAssemblyReference.cache

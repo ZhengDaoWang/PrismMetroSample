@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PrismMetroSample.Infrastructure.Constants
 {
-   public class RegionNames
+   public static class RegionNames
     {
         public static string MedicineMainContentRegion = "MedicineMainContentRegion";
 
@@ -13,5 +13,9 @@ namespace PrismMetroSample.Infrastructure.Constants
         public static string ShowSearchPatientRegion = "ShowSearchPatientRegion";
 
         public static string PatientListRegion = "PatientListRegion";
+
+        public static string UniformContentRegion = "UniformContentRegion";
+
+        public static string LoginContentRegion = "LoginContentRegion";
     }
 }

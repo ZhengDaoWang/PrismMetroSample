@@ -9,4 +9,3 @@ C:\Users\11019\Documents\MyProject\PrismMetroSample\PrismMetroSample\PrismMetroS
 C:\Users\11019\Documents\MyProject\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Styling\obj\Debug\netcoreapp3.1\PrismMetroSample.Styling_MarkupCompile.lref
 C:\Users\11019\Documents\MyProject\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Styling\obj\Debug\netcoreapp3.1\Styles\ButtonStyle.baml
 C:\Users\11019\Documents\MyProject\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Styling\obj\Debug\netcoreapp3.1\PrismMetroSample.Styling.g.resources
-C:\Users\11019\Documents\MyProject\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Styling\obj\Debug\netcoreapp3.1\PrismMetroSample.Styling.csprojAssemblyReference.cache

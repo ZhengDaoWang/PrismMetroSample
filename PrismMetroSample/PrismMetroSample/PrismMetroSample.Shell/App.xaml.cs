@@ -1,8 +1,6 @@
 ﻿using Prism.Ioc;
 using Prism.Unity;
-using PrismMetroSample.Shell.Views;
 using Prism.Modularity;
-using System;
 using System.Windows;
 using PrismMetroSample.Infrastructure.Services;
 using PrismMetroSample.Infrastructure;
@@ -18,9 +16,15 @@ namespace PrismMetroSample.Shell
     /// </summary>
     public partial class App : PrismApplication
     {
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+        }
+
         protected override Window CreateShell()
         {
-            return Container.Resolve<MainWindow>();
+            return Container.Resolve<LoginWindow>();
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -32,7 +36,6 @@ namespace PrismMetroSample.Shell
             //注册全局命令
             containerRegistry.RegisterSingleton<IApplicationCommands, ApplicationCommands>();
             containerRegistry.RegisterInstance<IFlyoutService>(Container.Resolve<FlyoutService>());
-
 
             //注册导航
             containerRegistry.RegisterForNavigation<LoginMainContent>();
