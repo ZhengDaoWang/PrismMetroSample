@@ -14,7 +14,7 @@ using System.Windows.Controls;
 
 namespace PrismMetroSample.Shell.ViewModels.Login
 {
-    public class LoginMainContentViewModel : BindableBase, INavigationAware
+    public class LoginMainContentViewModel : BindableBase, INavigationAware, IRegionMemberLifetime
     {
 
 
@@ -50,6 +50,7 @@ namespace PrismMetroSample.Shell.ViewModels.Login
         public DelegateCommand<PasswordBox> LoginCommand =>
             _loginCommand ?? (_loginCommand = new DelegateCommand<PasswordBox>(ExecuteLoginCommand, CanExecuteGoForwardCommand));
 
+        public bool KeepAlive => true;
 
         void ExecuteCreateAccountCommand()
         {
@@ -108,11 +109,12 @@ namespace PrismMetroSample.Shell.ViewModels.Login
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
-            
+            //MessageBox.Show("退出了LoginMainContent");
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
+            //MessageBox.Show("从CreateAccount导航到LoginMainContent");
             _journal = navigationContext.NavigationService.Journal;
 
             var loginId= navigationContext.Parameters["loginId"] as string;

@@ -21,6 +21,8 @@ namespace PrismMetroSample.Shell.ViewModels.Login
             set { SetProperty(ref _registeredLoginId, value); }
         }
 
+        public bool IsUseRequest { get; set; }
+
         private DelegateCommand _loginMainContentCommand;
         public DelegateCommand LoginMainContentCommand =>
             _loginMainContentCommand ?? (_loginMainContentCommand = new DelegateCommand(ExecuteLoginMainContentCommand));
@@ -54,7 +56,9 @@ namespace PrismMetroSample.Shell.ViewModels.Login
             {
                 return;
             }
+            this.IsUseRequest = true;
             MessageBox.Show("注册成功!");
+            //LoginMainContentCommand.Execute();
             _journal.GoBack();
         }
 
@@ -110,17 +114,18 @@ namespace PrismMetroSample.Shell.ViewModels.Login
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
-            
+            //MessageBox.Show("退出了CreateAccount");
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
-        { 
+        {
+            //MessageBox.Show("从LoginMainContent导航到CreateAccount");
             _journal = navigationContext.NavigationService.Journal;
         }
 
         public void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)
         {
-            if (!string.IsNullOrEmpty(RegisteredLoginId))
+            if (!string.IsNullOrEmpty(RegisteredLoginId) && this.IsUseRequest)
             {
                 if (MessageBox.Show("是否需要用当前注册的用户登录?", "Naviagte?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
@@ -128,6 +133,12 @@ namespace PrismMetroSample.Shell.ViewModels.Login
                 }
             }
             continuationCallback(true);
+            //var result = false;
+            //if (MessageBox.Show("是否需要导航到LoginMainContent页面?", "Naviagte?",MessageBoxButton.YesNo) ==MessageBoxResult.Yes)
+            //{
+            //    result = true;
+            //}
+            //continuationCallback(result);
         }
     }
 }

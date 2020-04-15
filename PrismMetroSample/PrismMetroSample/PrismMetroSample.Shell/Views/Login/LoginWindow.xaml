@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PrismMetroSample.Shell.Views.Login"
+        xmlns:region="clr-namespace:PrismMetroSample.Infrastructure.Constants;assembly=PrismMetroSample.Infrastructure"
         mc:Ignorable="d"
         xmlns:prism="http://prismlibrary.com/"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
@@ -15,6 +16,6 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
-        <ContentControl prism:RegionManager.RegionName="LoginContentRegion" Margin="5"/>
+        <ContentControl prism:RegionManager.RegionName="{x:Static region:RegionNames.LoginContentRegion}" Margin="5"/>
     </Grid>
 </Window>

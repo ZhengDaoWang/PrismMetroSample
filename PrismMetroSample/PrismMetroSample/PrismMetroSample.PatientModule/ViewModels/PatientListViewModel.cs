@@ -14,7 +14,7 @@ using PrismMetroSample.PatientModule.Views;
 
 namespace PrismMetroSample.PatientModule.ViewModels
 {
-    public class PatientListViewModel : BindableBase
+    public class PatientListViewModel : BindableBase, IRegionMemberLifetime
     {
         private IApplicationCommands _applicationCommands;
         public IApplicationCommands ApplicationCommands
@@ -33,6 +33,8 @@ namespace PrismMetroSample.PatientModule.ViewModels
         private DelegateCommand<Patient> _mouseDoubleClickCommand;
         public DelegateCommand<Patient> MouseDoubleClickCommand =>
             _mouseDoubleClickCommand ?? (_mouseDoubleClickCommand = new DelegateCommand<Patient>(ExecuteMouseDoubleClickCommand));
+
+        public bool KeepAlive => false;
 
         IEventAggregator _ea;
         private readonly IRegionManager _regionManager;
