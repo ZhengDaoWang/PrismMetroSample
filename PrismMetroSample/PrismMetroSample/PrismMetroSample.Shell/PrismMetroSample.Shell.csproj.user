@@ -9,6 +9,15 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\Dialogs\AlertDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Dialogs\DialogWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Dialogs\SuccessDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Login\CreateAccount.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -29,6 +38,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Views\Dialogs\AlertDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Dialogs\DialogWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Dialogs\SuccessDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\Login\CreateAccount.xaml">
       <SubType>Designer</SubType>
     </Page>

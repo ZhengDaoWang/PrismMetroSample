@@ -8,6 +8,8 @@ using PrismMetroSample.Shell.Views.Login;
 using Prism.Regions;
 using System.Windows.Controls.Primitives;
 using PrismMetroSample.Infrastructure.CustomerRegionAdapters;
+using PrismMetroSample.Shell.Views.Dialogs;
+using PrismMetroSample.Shell.ViewModels.Dialogs;
 
 namespace PrismMetroSample.Shell
 {
@@ -40,6 +42,10 @@ namespace PrismMetroSample.Shell
             //注册导航
             containerRegistry.RegisterForNavigation<LoginMainContent>();
             containerRegistry.RegisterForNavigation<CreateAccount>();
+
+            containerRegistry.RegisterDialog<AlertDialog, AlertDialogViewModel>();
+            containerRegistry.RegisterDialog<SuccessDialog, SuccessDialogViewModel>();
+            containerRegistry.RegisterDialogWindow<DialogWindow>();
         }
 
         //protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

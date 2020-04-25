@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using PrismMetroSample.Infrastructure.Constants;
+using Prism.Services.Dialogs;
 
 namespace PrismMetroSample.Shell.ViewModels.Login
 {
@@ -45,6 +46,7 @@ namespace PrismMetroSample.Shell.ViewModels.Login
 
         private DelegateCommand<object> _verityCommand;
         private readonly IRegionManager _regionManager;
+        private readonly IDialogService _dialogService;
         IRegionNavigationJournal _journal;
 
         public DelegateCommand<object> VerityCommand =>
@@ -57,7 +59,8 @@ namespace PrismMetroSample.Shell.ViewModels.Login
                 return;
             }
             this.IsUseRequest = true;
-            MessageBox.Show("注册成功!");
+            var Title = string.Empty;
+            _dialogService.ShowDialog("SuccessDialog", new DialogParameters($"message={"注册成功"}"), null);
             //LoginMainContentCommand.Execute();
             _journal.GoBack();
         }
@@ -96,9 +99,10 @@ namespace PrismMetroSample.Shell.ViewModels.Login
             return true;
         }
 
-        public CreateAccountViewModel(IRegionManager regionManager)
+        public CreateAccountViewModel(IRegionManager regionManager, IDialogService dialogService)
         {
             _regionManager = regionManager;
+            _dialogService = dialogService;
         }
 
         private void Navigate(string navigatePath)
@@ -127,10 +131,11 @@ namespace PrismMetroSample.Shell.ViewModels.Login
         {
             if (!string.IsNullOrEmpty(RegisteredLoginId) && this.IsUseRequest)
             {
-                if (MessageBox.Show("是否需要用当前注册的用户登录?", "Naviagte?", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                _dialogService.ShowDialog("AlertDialog", new DialogParameters($"message={"是否需要用当前注册的用户登录?"}"), r =>
                 {
-                    navigationContext.Parameters.Add("loginId", RegisteredLoginId);
-                }
+                    if (r.Result == ButtonResult.Yes)
+                        navigationContext.Parameters.Add("loginId", RegisteredLoginId);
+                });
             }
             continuationCallback(true);
             //var result = false;

@@ -1,6 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
+using Prism.Services.Dialogs;
 using PrismMetroSample.Infrastructure.Constants;
 using PrismMetroSample.Infrastructure.Services;
 using System.Threading;
@@ -13,6 +14,7 @@ namespace PrismMetroSample.Shell.ViewModels.Login
 
         private readonly IRegionManager _regionManager;
         private readonly IUserService _userService;
+        private readonly IDialogService _dialogService;
         private DelegateCommand _loginLoadingCommand;
         public DelegateCommand LoginLoadingCommand =>
             _loginLoadingCommand ?? (_loginLoadingCommand = new DelegateCommand(ExecuteLoginLoadingCommand));
@@ -29,7 +31,9 @@ namespace PrismMetroSample.Shell.ViewModels.Login
         {
             if (result.Result==true)
             {
-                MessageBox.Show("导航到LoginMainContent页面成功");
+                Thread.Sleep(1000);
+                //MessageBox.Show("导航到LoginMainContent页面成功");
+                _dialogService.Show("SuccessDialog", new DialogParameters($"message={"导航到LoginMainContent页面成功"}"), null);
             }
             else
             {
@@ -37,11 +41,11 @@ namespace PrismMetroSample.Shell.ViewModels.Login
             }
         }
 
-        public LoginWindowViewModel(IRegionManager regionManager, IUserService userService)
+        public LoginWindowViewModel(IRegionManager regionManager, IUserService userService, IDialogService dialogService)
         {
             _regionManager = regionManager;
             _userService = userService;
-            
+            _dialogService = dialogService;
         }
 
     }
