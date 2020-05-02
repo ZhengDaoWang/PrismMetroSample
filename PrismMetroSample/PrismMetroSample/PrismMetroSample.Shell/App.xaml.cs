@@ -31,6 +31,7 @@ namespace PrismMetroSample.Shell
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            //注册服务
             containerRegistry.Register<IMedicineSerivce, MedicineSerivce>();
             containerRegistry.Register<IPatientService, PatientService>();
             containerRegistry.Register<IUserService, UserService>();
@@ -43,6 +44,7 @@ namespace PrismMetroSample.Shell
             containerRegistry.RegisterForNavigation<LoginMainContent>();
             containerRegistry.RegisterForNavigation<CreateAccount>();
 
+            //注册对话框
             containerRegistry.RegisterDialog<AlertDialog, AlertDialogViewModel>();
             containerRegistry.RegisterDialog<SuccessDialog, SuccessDialogViewModel>();
             containerRegistry.RegisterDialogWindow<DialogWindow>();

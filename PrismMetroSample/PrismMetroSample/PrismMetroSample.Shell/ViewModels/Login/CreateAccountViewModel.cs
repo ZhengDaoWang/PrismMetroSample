@@ -15,6 +15,16 @@ namespace PrismMetroSample.Shell.ViewModels.Login
     public class CreateAccountViewModel : BindableBase,INavigationAware,IConfirmNavigationRequest
     {
 
+        #region Fields
+
+        private readonly IRegionManager _regionManager;
+        private readonly IDialogService _dialogService;
+        private IRegionNavigationJournal _journal;
+
+        #endregion
+
+        #region Properties
+
         private string _registeredLoginId;
         public string RegisteredLoginId
         {
@@ -24,6 +34,10 @@ namespace PrismMetroSample.Shell.ViewModels.Login
 
         public bool IsUseRequest { get; set; }
 
+        #endregion
+
+        #region Commands
+
         private DelegateCommand _loginMainContentCommand;
         public DelegateCommand LoginMainContentCommand =>
             _loginMainContentCommand ?? (_loginMainContentCommand = new DelegateCommand(ExecuteLoginMainContentCommand));
@@ -31,6 +45,14 @@ namespace PrismMetroSample.Shell.ViewModels.Login
         private DelegateCommand _goBackCommand;
         public DelegateCommand GoBackCommand =>
             _goBackCommand ?? (_goBackCommand = new DelegateCommand(ExecuteGoBackCommand));
+
+        private DelegateCommand<object> _verityCommand;
+        public DelegateCommand<object> VerityCommand =>
+    _verityCommand ?? (_verityCommand = new DelegateCommand<object>(ExecuteVerityCommand));
+
+        #endregion
+
+        #region  Excutes
 
         void ExecuteGoBackCommand()
         {
@@ -42,16 +64,6 @@ namespace PrismMetroSample.Shell.ViewModels.Login
             Navigate("LoginMainContent");
         }
 
-       
-
-        private DelegateCommand<object> _verityCommand;
-        private readonly IRegionManager _regionManager;
-        private readonly IDialogService _dialogService;
-        IRegionNavigationJournal _journal;
-
-        public DelegateCommand<object> VerityCommand =>
-            _verityCommand ?? (_verityCommand = new DelegateCommand<object>(ExecuteVerityCommand));
-
         void ExecuteVerityCommand(object parameter)
         {
             if (!VerityRegister(parameter))
@@ -61,8 +73,16 @@ namespace PrismMetroSample.Shell.ViewModels.Login
             this.IsUseRequest = true;
             var Title = string.Empty;
             _dialogService.ShowDialog("SuccessDialog", new DialogParameters($"message={"注册成功"}"), null);
-            //LoginMainContentCommand.Execute();
             _journal.GoBack();
+        }
+
+        #endregion
+
+
+        public CreateAccountViewModel(IRegionManager regionManager, IDialogService dialogService)
+        {
+            _regionManager = regionManager;
+            _dialogService = dialogService;
         }
 
         private bool VerityRegister(object parameter)
@@ -99,11 +119,6 @@ namespace PrismMetroSample.Shell.ViewModels.Login
             return true;
         }
 
-        public CreateAccountViewModel(IRegionManager regionManager, IDialogService dialogService)
-        {
-            _regionManager = regionManager;
-            _dialogService = dialogService;
-        }
 
         private void Navigate(string navigatePath)
         {

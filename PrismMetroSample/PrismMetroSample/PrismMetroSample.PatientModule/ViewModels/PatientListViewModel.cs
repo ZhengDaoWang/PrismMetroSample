@@ -16,6 +16,19 @@ namespace PrismMetroSample.PatientModule.ViewModels
 {
     public class PatientListViewModel : BindableBase, IRegionMemberLifetime
     {
+
+        #region Fields
+
+        private readonly IEventAggregator _ea;
+        private readonly IRegionManager _regionManager;
+        private readonly IPatientService _patientService;
+        private IRegion _region;
+        private PatientList _patientListView;
+
+        #endregion
+
+        #region Properties
+
         private IApplicationCommands _applicationCommands;
         public IApplicationCommands ApplicationCommands
         {
@@ -30,17 +43,32 @@ namespace PrismMetroSample.PatientModule.ViewModels
             set { SetProperty(ref _allPatients, value); }
         }
 
+
+        public bool KeepAlive => false;
+
+        #endregion
+
+        #region Commands
+
         private DelegateCommand<Patient> _mouseDoubleClickCommand;
         public DelegateCommand<Patient> MouseDoubleClickCommand =>
             _mouseDoubleClickCommand ?? (_mouseDoubleClickCommand = new DelegateCommand<Patient>(ExecuteMouseDoubleClickCommand));
 
-        public bool KeepAlive => false;
+        #endregion
 
-        IEventAggregator _ea;
-        private readonly IRegionManager _regionManager;
-        IPatientService _patientService;
-        private IRegion _region;
-        private PatientList _patientListView;
+        #region  Excutes
+
+        /// <summary>
+        /// DataGrid 双击按钮命令方法
+        /// </summary>
+        void ExecuteMouseDoubleClickCommand(Patient patient)
+        {
+            this.ApplicationCommands.ShowCommand.Execute(FlyoutNames.PatientDetailFlyout);//打开窗体
+            _ea.GetEvent<PatientSentEvent>().Publish(patient);//发布消息
+        }
+
+        #endregion
+
 
         /// <summary>
         /// 构造函数
@@ -51,15 +79,6 @@ namespace PrismMetroSample.PatientModule.ViewModels
             this.ApplicationCommands = applicationCommands;
             _patientService = patientService;
             this.AllPatients = _patientService.GetAllPatients();         
-        }
-
-        /// <summary>
-        /// DataGrid 双击按钮命令方法
-        /// </summary>
-        void ExecuteMouseDoubleClickCommand(Patient patient)
-        {
-            this.ApplicationCommands.ShowCommand.Execute(FlyoutNames.PatientDetailFlyout);//打开窗体
-            _ea.GetEvent<PatientSentEvent>().Publish(patient);//发布消息
         }
 
     }

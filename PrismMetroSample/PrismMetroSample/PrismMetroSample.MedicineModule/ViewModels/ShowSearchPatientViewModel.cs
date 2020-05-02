@@ -12,17 +12,22 @@ namespace PrismMetroSample.MedicineModule.ViewModels
 
     public class ShowSearchPatientViewModel : BindableBase
     {
-        private IApplicationCommands _applicationCommands;
+        #region Fields
+
         private readonly IRegionManager _regionManager;
         private ShowSearchPatient _showSearchPatientView;
         private IRegion _region;
 
-        private bool _isShow=true;
+        #endregion
+
+        #region Properties
+
+        private bool _isShow = true;
         public bool IsShow
         {
-            get { return _isShow=true; }
-            set 
-            { 
+            get { return _isShow = true; }
+            set
+            {
                 SetProperty(ref _isShow, value);
                 if (_isShow)
                 {
@@ -35,9 +40,24 @@ namespace PrismMetroSample.MedicineModule.ViewModels
             }
         }
 
+        private IApplicationCommands _applicationCommands;
+        public IApplicationCommands ApplicationCommands
+        {
+            get { return _applicationCommands; }
+            set { SetProperty(ref _applicationCommands, value); }
+        }
+
+        #endregion
+
+        #region Commands
+
         private DelegateCommand _showSearchLoadingCommand;
         public DelegateCommand ShowSearchLoadingCommand =>
             _showSearchLoadingCommand ?? (_showSearchLoadingCommand = new DelegateCommand(ExecuteShowSearchLoadingCommand));
+
+        #endregion
+
+        #region  Excutes
 
         void ExecuteShowSearchLoadingCommand()
         {
@@ -45,11 +65,9 @@ namespace PrismMetroSample.MedicineModule.ViewModels
             _showSearchPatientView = (ShowSearchPatient)_region.Views.Where(t => t.GetType() == typeof(ShowSearchPatient)).FirstOrDefault();
         }
 
-        public IApplicationCommands ApplicationCommands
-        {
-            get { return _applicationCommands; }
-            set { SetProperty(ref _applicationCommands, value); }
-        }
+        #endregion
+
+
         public ShowSearchPatientViewModel(IApplicationCommands applicationCommands,IRegionManager regionManager)
         {
             this.ApplicationCommands = applicationCommands;

@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\11019\Documents\MyProject\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Shell\obj\Debug\netcoreapp3.1\
+F:\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Shell\obj\Debug\netcoreapp3.1\
 PrismMetroSample.Shell
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-C:\Users\11019\Documents\MyProject\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Shell\App.xaml
+F:\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Shell\App.xaml
 9-547321401
 
-20-1896981240
-206-1968285360
+191059657792
+206461158845
 Views\Dialogs\AlertDialog.xaml;Views\Dialogs\DialogWindow.xaml;Views\Dialogs\SuccessDialog.xaml;Views\Login\CreateAccount.xaml;Views\Login\LoginMainContent.xaml;Views\Login\LoginWindow.xaml;Views\MainWindow.xaml;Views\RegionAdapterViews\RegionAdapterView1.xaml;Views\RegionAdapterViews\RegionAdapterView2.xaml;
 
 False

@@ -13,12 +13,14 @@ namespace PrismMetroSample.Shell.ViewModels.Login
 {
     public class LoginMainContentViewModel : BindableBase, INavigationAware, IRegionMemberLifetime
     {
+        #region Fields
 
-
-        IRegionNavigationJournal _journal;
+        private IRegionNavigationJournal _journal;
         private readonly IRegionManager _regionManager;
 
+        #endregion
 
+        #region Properties
 
         private bool _isCanExcute;
         public bool IsCanExcute
@@ -34,10 +36,15 @@ namespace PrismMetroSample.Shell.ViewModels.Login
             set { SetProperty(ref _currentUser, value); }
         }
 
+        public bool KeepAlive => true;
+
+        #endregion
+
+        #region Commands
+
         private DelegateCommand _createAccountCommand;
         public DelegateCommand CreateAccountCommand =>
             _createAccountCommand ?? (_createAccountCommand = new DelegateCommand(ExecuteCreateAccountCommand));
-
 
         private DelegateCommand _goForwardCommand;
         public DelegateCommand GoForwardCommand =>
@@ -47,19 +54,14 @@ namespace PrismMetroSample.Shell.ViewModels.Login
         public DelegateCommand<PasswordBox> LoginCommand =>
             _loginCommand ?? (_loginCommand = new DelegateCommand<PasswordBox>(ExecuteLoginCommand, CanExecuteGoForwardCommand));
 
-        public bool KeepAlive => true;
+        #endregion
+
+        #region  Excutes
 
         void ExecuteCreateAccountCommand()
         {
             Navigate("CreateAccount");
         }
-
-        private void Navigate(string navigatePath)
-        {
-            if (navigatePath != null)
-                _regionManager.RequestNavigate(RegionNames.LoginContentRegion, navigatePath);
-        }
-
         void ExecuteLoginCommand(PasswordBox passwordBox)
         {
             if (string.IsNullOrEmpty(this.CurrentUser.LoginId))
@@ -81,10 +83,25 @@ namespace PrismMetroSample.Shell.ViewModels.Login
             ShellSwitcher.Switch<LoginWindow, MainWindow>();
         }
 
-       private void ExecuteGoForwardCommand()
+        private void ExecuteGoForwardCommand()
         {
             _journal.GoForward();
         }
+
+        #endregion
+
+        public LoginMainContentViewModel(IRegionManager regionManager)
+        {
+            _regionManager = regionManager;
+        }
+
+        private void Navigate(string navigatePath)
+        {
+            if (navigatePath != null)
+                _regionManager.RequestNavigate(RegionNames.LoginContentRegion, navigatePath);
+        }
+
+
 
        private bool CanExecuteGoForwardCommand(PasswordBox passwordBox)
         {
@@ -92,15 +109,8 @@ namespace PrismMetroSample.Shell.ViewModels.Login
             return true;
         }
 
-
-        public LoginMainContentViewModel(IRegionManager regionManager)
-        {
-            _regionManager = regionManager;
-        }
-
         public bool IsNavigationTarget(NavigationContext navigationContext)
-        {
-            
+        {          
             return true;
         }
 

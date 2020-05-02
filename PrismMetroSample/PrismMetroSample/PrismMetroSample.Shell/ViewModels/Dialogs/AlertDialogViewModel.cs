@@ -9,26 +9,14 @@ namespace PrismMetroSample.Shell.ViewModels.Dialogs
 {
     public class AlertDialogViewModel : BindableBase, IDialogAware
     {
-        private DelegateCommand<string> _closeDialogCommand;
-        public DelegateCommand<string> CloseDialogCommand =>
-            _closeDialogCommand ?? (_closeDialogCommand = new DelegateCommand<string>(ExecuteCloseDialogCommand));
 
-        void ExecuteCloseDialogCommand(string parameter)
-        {
-            ButtonResult result = ButtonResult.None;
+        #region Fields
 
-            if (parameter?.ToLower() == "true")
-                result = ButtonResult.Yes;
-            else if (parameter?.ToLower() == "false")
-                result = ButtonResult.No;
+        public event Action<IDialogResult> RequestClose;
 
-            RaiseRequestClose(new DialogResult(result));
-        }
+        #endregion
 
-        public virtual void RaiseRequestClose(IDialogResult dialogResult)
-        {
-            RequestClose?.Invoke(dialogResult);
-        }
+        #region Properties
 
         private string _message;
         public string Message
@@ -43,8 +31,37 @@ namespace PrismMetroSample.Shell.ViewModels.Dialogs
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
+        #endregion
 
-        public event Action<IDialogResult> RequestClose;
+        #region Commands
+
+        private DelegateCommand<string> _closeDialogCommand;
+        public DelegateCommand<string> CloseDialogCommand =>
+            _closeDialogCommand ?? (_closeDialogCommand = new DelegateCommand<string>(ExecuteCloseDialogCommand));
+
+        #endregion
+
+        #region  Excutes
+
+        void ExecuteCloseDialogCommand(string parameter)
+        {
+            ButtonResult result = ButtonResult.None;
+
+            if (parameter?.ToLower() == "true")
+                result = ButtonResult.Yes;
+            else if (parameter?.ToLower() == "false")
+                result = ButtonResult.No;
+
+            RaiseRequestClose(new DialogResult(result));
+        }
+
+        #endregion
+
+
+        public virtual void RaiseRequestClose(IDialogResult dialogResult)
+        {
+            RequestClose?.Invoke(dialogResult);
+        }     
 
         public bool CanCloseDialog()
         {

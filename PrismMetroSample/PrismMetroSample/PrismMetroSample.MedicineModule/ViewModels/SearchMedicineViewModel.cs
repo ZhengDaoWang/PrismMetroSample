@@ -11,9 +11,15 @@ namespace PrismMetroSample.MedicineModule.ViewModels
 {
     public class SearchMedicineViewModel : BindableBase
     {
-        IMedicineSerivce _medicineSerivce;
+        #region Fields
 
-        IEventAggregator _ea;
+        private readonly IMedicineSerivce _medicineSerivce;
+        private readonly IEventAggregator _ea;
+
+        #endregion
+
+        #region Properties
+
         private List<Medicine> _allMedicines;
         public List<Medicine> AllMedicines
         {
@@ -35,9 +41,21 @@ namespace PrismMetroSample.MedicineModule.ViewModels
             set { SetProperty(ref _searchCondition, value); }
         }
 
+        #endregion
+
+        #region Commands
+
         private DelegateCommand _searchCommand;
         public DelegateCommand SearchCommand =>
             _searchCommand ?? (_searchCommand = new DelegateCommand(ExecuteSearchCommand));
+
+        private DelegateCommand<Medicine> _addMedicineCommand;
+        public DelegateCommand<Medicine> AddMedicineCommand =>
+            _addMedicineCommand ?? (_addMedicineCommand = new DelegateCommand<Medicine>(ExecuteAddMedicineCommand));
+
+        #endregion
+
+        #region  Excutes
 
         void ExecuteSearchCommand()
         {
@@ -45,14 +63,14 @@ namespace PrismMetroSample.MedicineModule.ViewModels
             || t.Unit.Contains(this.SearchCondition)).ToList();
         }
 
-        private DelegateCommand<Medicine> _addMedicineCommand;
-        public DelegateCommand<Medicine> AddMedicineCommand =>
-            _addMedicineCommand ?? (_addMedicineCommand = new DelegateCommand<Medicine>(ExecuteAddMedicineCommand));
-
         void ExecuteAddMedicineCommand(Medicine currentMedicine)
         {
             _ea.GetEvent<MedicineSentEvent>().Publish(currentMedicine);
         }
+
+        #endregion
+
+
 
         public SearchMedicineViewModel(IMedicineSerivce medicineSerivce, IEventAggregator ea)
         {

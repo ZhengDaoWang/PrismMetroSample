@@ -17,7 +17,6 @@ namespace PrismMetroSample.Shell
         public static void Show<T>(T window = null) where T : Window, new()
         {
             var shell = Application.Current.MainWindow = window ?? new T();
-            //shell.Loaded += ProcessController.OnWindowLoaded;
             shell?.Show();
         }
 

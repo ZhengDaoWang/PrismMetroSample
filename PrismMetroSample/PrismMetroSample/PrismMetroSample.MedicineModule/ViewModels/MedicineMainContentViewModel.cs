@@ -12,13 +12,17 @@ namespace PrismMetroSample.MedicineModule.ViewModels
 {
     public class MedicineMainContentViewModel : BindableBase,IActiveAware
     {
-        IMedicineSerivce _medicineSerivce;
-        IEventAggregator _ea;
+        #region Fields
 
-        private ObservableCollection<Medicine> _allMedicines;
-
+        private readonly IMedicineSerivce _medicineSerivce;
+        private readonly IEventAggregator _ea;
         public event EventHandler IsActiveChanged;
 
+        #endregion
+
+        #region Properties
+
+        private ObservableCollection<Medicine> _allMedicines;
         public ObservableCollection<Medicine> AllMedicines
         {
             get { return _allMedicines; }
@@ -43,6 +47,21 @@ namespace PrismMetroSample.MedicineModule.ViewModels
                 IsActiveChanged?.Invoke(this, new EventArgs());
             }
         }
+
+        #endregion
+
+        #region Commands
+
+
+        #endregion
+
+        #region  Excutes
+
+
+
+        #endregion
+
+
 
         public MedicineMainContentViewModel(IMedicineSerivce medicineSerivce,IEventAggregator ea)
         {

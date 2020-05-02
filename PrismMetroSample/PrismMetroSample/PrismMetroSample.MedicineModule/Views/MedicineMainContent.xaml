@@ -13,7 +13,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="MedicineModule" FontSize="25"/>
-        <DataGrid Grid.Row="1" ItemsSource="{Binding AllMedicines}" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="1" IsReadOnly="True" ItemsSource="{Binding AllMedicines}" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>

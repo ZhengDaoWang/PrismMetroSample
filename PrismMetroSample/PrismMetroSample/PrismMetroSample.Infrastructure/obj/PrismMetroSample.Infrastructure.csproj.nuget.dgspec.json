@@ -1,21 +1,18 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\11019\\Documents\\MyProject\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample.Infrastructure\\PrismMetroSample.Infrastructure.csproj": {}
+    "F:\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample.Infrastructure\\PrismMetroSample.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\11019\\Documents\\MyProject\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample.Infrastructure\\PrismMetroSample.Infrastructure.csproj": {
+    "F:\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample.Infrastructure\\PrismMetroSample.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\11019\\Documents\\MyProject\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample.Infrastructure\\PrismMetroSample.Infrastructure.csproj",
+        "projectUniqueName": "F:\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample.Infrastructure\\PrismMetroSample.Infrastructure.csproj",
         "projectName": "PrismMetroSample.Infrastructure",
-        "projectPath": "C:\\Users\\11019\\Documents\\MyProject\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample.Infrastructure\\PrismMetroSample.Infrastructure.csproj",
+        "projectPath": "F:\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample.Infrastructure\\PrismMetroSample.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\11019\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\11019\\Documents\\MyProject\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample.Infrastructure\\obj\\",
+        "outputPath": "F:\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample\\PrismMetroSample.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\11019\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -68,7 +65,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

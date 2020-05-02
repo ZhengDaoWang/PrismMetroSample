@@ -67,12 +67,7 @@ namespace PrismMetroSample.Shell.ViewModels
 
         #endregion
 
-        public MainWindowViewModel(IModuleManager moduleManager,IRegionManager regionManager)
-        {
-            _moduleManager = moduleManager;
-            RegionMannager = regionManager;
-            _moduleManager.LoadModuleCompleted += _moduleManager_LoadModuleCompleted;
-        }
+        #region  Excutes
 
         void ExecuteLoadingCommand()
         {
@@ -85,7 +80,7 @@ namespace PrismMetroSample.Shell.ViewModels
             var regionAdapterView1 = CommonServiceLocator.ServiceLocator.Current.GetInstance<RegionAdapterView1>();
             uniformContentRegion.Add(regionAdapterView1);
             var regionAdapterView2 = CommonServiceLocator.ServiceLocator.Current.GetInstance<RegionAdapterView2>();
-            uniformContentRegion.Add(regionAdapterView2); 
+            uniformContentRegion.Add(regionAdapterView2);
 
             _medicineListRegion = RegionMannager.Regions[RegionNames.MedicineMainContentRegion];
         }
@@ -101,6 +96,13 @@ namespace PrismMetroSample.Shell.ViewModels
             _medicineListRegion.Activate(_medicineMainContentView);
         }
 
+        void ExecuteLoadMedicineModuleCommand()
+        {
+            _moduleManager.LoadModule("MedicineModule");
+            _medicineMainContentView = (MedicineMainContent)_medicineListRegion.Views.Where(t => t.GetType() == typeof(MedicineMainContent)).FirstOrDefault();
+            this.IsCanExcute = true;
+        }
+
         void ExecuteDeactivePaientListCommand()
         {
             _paientListRegion.Deactivate(_patientListView);
@@ -111,16 +113,21 @@ namespace PrismMetroSample.Shell.ViewModels
             _paientListRegion.Activate(_patientListView);
         }
 
+        #endregion
+
+        public MainWindowViewModel(IModuleManager moduleManager,IRegionManager regionManager)
+        {
+            _moduleManager = moduleManager;
+            RegionMannager = regionManager;
+            _moduleManager.LoadModuleCompleted += _moduleManager_LoadModuleCompleted;
+        }
+
+
         private void _moduleManager_LoadModuleCompleted(object sender, LoadModuleCompletedEventArgs e)
         {
             MessageBox.Show($"{e.ModuleInfo.ModuleName}模块被加载了");
         }
 
-        void ExecuteLoadMedicineModuleCommand()
-        {
-            _moduleManager.LoadModule("MedicineModule");
-            _medicineMainContentView = (MedicineMainContent)_medicineListRegion.Views.Where(t => t.GetType() == typeof(MedicineMainContent)).FirstOrDefault();
-            this.IsCanExcute = true;
-        }
+
     }
 }

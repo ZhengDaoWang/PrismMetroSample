@@ -4,7 +4,7 @@
 library
 C#
 .cs
-C:\Users\11019\Documents\MyProject\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.PatientModule\obj\Debug\netcoreapp3.1\
+F:\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.PatientModule\obj\Debug\netcoreapp3.1\
 PrismMetroSample.PatientModule
 none
 false
@@ -13,7 +13,7 @@ TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 2851601822
 
 5-382236031
-203-421576938
+203-7658598
 Views\PatientDetail.xaml;Views\PatientList.xaml;
 
 False

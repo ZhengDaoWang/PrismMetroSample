@@ -12,7 +12,15 @@ namespace PrismMetroSample.PatientModule.ViewModels
 {
     public class PatientDetailViewModel : BindableBase
     {
-        IEventAggregator _ea;
+
+        #region Fields
+
+        private readonly IMedicineSerivce _medicineSerivce;
+        private readonly IEventAggregator _ea;
+
+        #endregion
+
+        #region Properties
 
         private Patient _currentPatient;
         public Patient CurrentPatient
@@ -28,16 +36,27 @@ namespace PrismMetroSample.PatientModule.ViewModels
             set { SetProperty(ref _lstMedicines, value); }
         }
 
+        #endregion
+
+        #region Commands
+
         private DelegateCommand _cancleSubscribeCommand;
         public DelegateCommand CancleSubscribeCommand =>
             _cancleSubscribeCommand ?? (_cancleSubscribeCommand = new DelegateCommand(ExecuteCancleSubscribeCommand));
+
+        #endregion
+
+        #region  Excutes
 
         void ExecuteCancleSubscribeCommand()
         {
             _ea.GetEvent<MedicineSentEvent>().Unsubscribe(MedicineMessageReceived);
         }
 
-        IMedicineSerivce _medicineSerivce;
+        #endregion
+
+
+
         public PatientDetailViewModel(IEventAggregator ea, IMedicineSerivce medicineSerivce)
         {
             _medicineSerivce = medicineSerivce;
