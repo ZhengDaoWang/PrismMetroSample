@@ -13,7 +13,6 @@ C:\Users\11019\Documents\MyProject\PrismMetroSample\PrismMetroSample\PrismMetroS
 F:\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Styling\bin\Debug\netcoreapp3.1\PrismMetroSample.Styling.deps.json
 F:\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Styling\bin\Debug\netcoreapp3.1\PrismMetroSample.Styling.dll
 F:\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Styling\bin\Debug\netcoreapp3.1\PrismMetroSample.Styling.pdb
-F:\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Styling\obj\Debug\netcoreapp3.1\PrismMetroSample.Styling.csprojAssemblyReference.cache
 F:\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Styling\obj\Debug\netcoreapp3.1\PrismMetroSample.Styling_MarkupCompile.cache
 F:\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Styling\obj\Debug\netcoreapp3.1\PrismMetroSample.Styling_MarkupCompile.lref
 F:\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Styling\obj\Debug\netcoreapp3.1\Styles\ButtonStyle.baml

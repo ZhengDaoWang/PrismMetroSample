@@ -44,7 +44,7 @@ namespace PrismMetroSample.PatientModule.ViewModels
         }
 
 
-        public bool KeepAlive => false;
+        public bool KeepAlive => true;
 
         #endregion
 

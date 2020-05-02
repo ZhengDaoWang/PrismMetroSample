@@ -8,6 +8,7 @@ using PrismMetroSample.Shell.Views.Login;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using Prism.Services.Dialogs;
 
 namespace PrismMetroSample.Shell.ViewModels.Login
 {
@@ -17,6 +18,7 @@ namespace PrismMetroSample.Shell.ViewModels.Login
 
         private IRegionNavigationJournal _journal;
         private readonly IRegionManager _regionManager;
+        private readonly IDialogService _dialogService;
 
         #endregion
 
@@ -66,18 +68,18 @@ namespace PrismMetroSample.Shell.ViewModels.Login
         {
             if (string.IsNullOrEmpty(this.CurrentUser.LoginId))
             {
-                MessageBox.Show("LoginId 不能为空!");
+                _dialogService.Show("WarningDialog", new DialogParameters($"message={"LoginId 不能为空!"}"),null);
                 return;
             }
             this.CurrentUser.PassWord = passwordBox.Password;
             if (string.IsNullOrEmpty(this.CurrentUser.PassWord))
             {
-                MessageBox.Show("PassWord 不能为空!");
+                _dialogService.Show("WarningDialog", new DialogParameters($"message={"PassWord 不能为空!"}"), null);
                 return;
             }
             else if (Global.AllUsers.Where(t => t.LoginId == this.CurrentUser.LoginId && t.PassWord == this.CurrentUser.PassWord).Count() == 0)
             {
-                MessageBox.Show("LoginId 或者 PassWord 错误!");
+                _dialogService.Show("WarningDialog", new DialogParameters($"message={"LoginId 或者 PassWord 错误!"}"), null);
                 return;
             }
             ShellSwitcher.Switch<LoginWindow, MainWindow>();
@@ -90,9 +92,10 @@ namespace PrismMetroSample.Shell.ViewModels.Login
 
         #endregion
 
-        public LoginMainContentViewModel(IRegionManager regionManager)
+        public LoginMainContentViewModel(IRegionManager regionManager, IDialogService dialogService)
         {
             _regionManager = regionManager;
+            _dialogService = dialogService;
         }
 
         private void Navigate(string navigatePath)

@@ -64,7 +64,7 @@ namespace PrismMetroSample.Shell.ViewModels.Login
             }
             else
             {
-                MessageBox.Show("导航到LoginMainContent页面失败");
+                 _dialogService.Show("WarningDialog", new DialogParameters($"message={"导航到LoginMainContent页面失败"}"), null);
             }
         }
 

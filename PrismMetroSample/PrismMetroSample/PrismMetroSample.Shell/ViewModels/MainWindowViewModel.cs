@@ -2,6 +2,7 @@
 using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Regions;
+using Prism.Services.Dialogs;
 using PrismMetroSample.Infrastructure.Constants;
 using PrismMetroSample.MedicineModule.Views;
 using PrismMetroSample.PatientModule.Views;
@@ -18,6 +19,7 @@ namespace PrismMetroSample.Shell.ViewModels
         #region Fields
 
         private IModuleManager _moduleManager;
+        private readonly IDialogService _dialogService;
         private IRegion _paientListRegion;
         private IRegion _medicineListRegion;
         private PatientList _patientListView;
@@ -115,17 +117,18 @@ namespace PrismMetroSample.Shell.ViewModels
 
         #endregion
 
-        public MainWindowViewModel(IModuleManager moduleManager,IRegionManager regionManager)
+        public MainWindowViewModel(IModuleManager moduleManager,IRegionManager regionManager,IDialogService dialogService)
         {
             _moduleManager = moduleManager;
             RegionMannager = regionManager;
+            _dialogService = dialogService;
             _moduleManager.LoadModuleCompleted += _moduleManager_LoadModuleCompleted;
         }
 
 
         private void _moduleManager_LoadModuleCompleted(object sender, LoadModuleCompletedEventArgs e)
         {
-            MessageBox.Show($"{e.ModuleInfo.ModuleName}模块被加载了");
+            _dialogService.ShowDialog("SuccessDialog", new DialogParameters($"message={e.ModuleInfo.ModuleName+ "模块被加载了"}"), null);
         }
 
 

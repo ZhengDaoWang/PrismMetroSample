@@ -7,6 +7,7 @@ using PrismMetroSample.Infrastructure.Events;
 using System;
 using Prism;
 using System.Windows;
+using Prism.Services.Dialogs;
 
 namespace PrismMetroSample.MedicineModule.ViewModels
 {
@@ -16,6 +17,8 @@ namespace PrismMetroSample.MedicineModule.ViewModels
 
         private readonly IMedicineSerivce _medicineSerivce;
         private readonly IEventAggregator _ea;
+        private readonly IDialogService _dialogService;
+
         public event EventHandler IsActiveChanged;
 
         #endregion
@@ -38,11 +41,11 @@ namespace PrismMetroSample.MedicineModule.ViewModels
                 _isActive = value;
                 if (_isActive)
                 {
-                    MessageBox.Show("视图被激活了");
+                    _dialogService.ShowDialog("SuccessDialog", new DialogParameters($"message={"视图被激活了"}"), null);
                 }
                 else
                 {
-                    MessageBox.Show("视图失效了");
+                    _dialogService.ShowDialog("WarningDialog", new DialogParameters($"message={"视图失效了"}"), null);
                 }
                 IsActiveChanged?.Invoke(this, new EventArgs());
             }
@@ -63,10 +66,11 @@ namespace PrismMetroSample.MedicineModule.ViewModels
 
 
 
-        public MedicineMainContentViewModel(IMedicineSerivce medicineSerivce,IEventAggregator ea)
+        public MedicineMainContentViewModel(IMedicineSerivce medicineSerivce,IEventAggregator ea,IDialogService dialogService)
         {
             _medicineSerivce = medicineSerivce;
             _ea = ea;
+            _dialogService = dialogService;
             this.AllMedicines = new ObservableCollection<Medicine>(_medicineSerivce.GetAllMedicines());
             _ea.GetEvent<MedicineSentEvent>().Subscribe(MedicineMessageReceived);//订阅事件
         }

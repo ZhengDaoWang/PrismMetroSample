@@ -47,6 +47,7 @@ namespace PrismMetroSample.Shell
             //注册对话框
             containerRegistry.RegisterDialog<AlertDialog, AlertDialogViewModel>();
             containerRegistry.RegisterDialog<SuccessDialog, SuccessDialogViewModel>();
+            containerRegistry.RegisterDialog<WarningDialog, WarningDialogViewModel>();
             containerRegistry.RegisterDialogWindow<DialogWindow>();
         }
 

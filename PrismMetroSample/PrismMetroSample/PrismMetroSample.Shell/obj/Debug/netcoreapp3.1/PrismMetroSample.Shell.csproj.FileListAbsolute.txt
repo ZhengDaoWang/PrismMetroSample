@@ -108,3 +108,5 @@ F:\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Shell\obj
 F:\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Shell\obj\Debug\netcoreapp3.1\PrismMetroSample.Shell.dll
 F:\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Shell\obj\Debug\netcoreapp3.1\PrismMetroSample.Shell.pdb
 F:\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Shell\obj\Debug\netcoreapp3.1\PrismMetroSample.Shell.genruntimeconfig.cache
+F:\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Shell\obj\Debug\netcoreapp3.1\Views\Dialogs\WarningDialog.g.cs
+F:\PrismMetroSample\PrismMetroSample\PrismMetroSample\PrismMetroSample.Shell\obj\Debug\netcoreapp3.1\Views\Dialogs\WarningDialog.baml
