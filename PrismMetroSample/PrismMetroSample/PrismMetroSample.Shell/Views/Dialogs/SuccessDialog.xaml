@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:PrismMetroSample.Shell.Views.Dialogs"
              mc:Ignorable="d" 
              xmlns:prism="http://prismlibrary.com/"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
                Height="70" prism:ViewModelLocator.AutoWireViewModel="True" >
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">

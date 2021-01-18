@@ -5,7 +5,7 @@
              xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
               WindowStartupLocation="CenterScreen"
              GlowBrush="{DynamicResource AccentColorBrush}"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
               xmlns:region="clr-namespace:PrismMetroSample.Infrastructure.Constants;assembly=PrismMetroSample.Infrastructure"
                prism:RegionManager.RegionManager="{Binding RegionMannager}"    
              prism:ViewModelLocator.AutoWireViewModel="True" Height="800" Width="800" Title="MainWindow">

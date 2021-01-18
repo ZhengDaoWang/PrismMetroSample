@@ -4,7 +4,7 @@
              xmlns:prism="http://prismlibrary.com/"  
             xmlns:const="clr-namespace:PrismMetroSample.Infrastructure.Constants;assembly=PrismMetroSample.Infrastructure"
              Orientation="Horizontal"    
-            xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+            xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              prism:ViewModelLocator.AutoWireViewModel="True">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">

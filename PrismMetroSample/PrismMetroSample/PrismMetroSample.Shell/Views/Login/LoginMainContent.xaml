@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              xmlns:conveter="clr-namespace:PrismMetroSample.Infrastructure.Converters;assembly=PrismMetroSample.Infrastructure"
              xmlns:prism="http://prismlibrary.com/"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              d:DesignHeight="600" d:DesignWidth="400" prism:ViewModelLocator.AutoWireViewModel="True">
     <UserControl.Resources>
         <conveter:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>

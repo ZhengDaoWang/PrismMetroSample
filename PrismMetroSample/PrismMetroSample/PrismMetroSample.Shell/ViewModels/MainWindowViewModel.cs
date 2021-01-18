@@ -1,4 +1,5 @@
 ﻿using Prism.Commands;
+using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Regions;
@@ -75,13 +76,13 @@ namespace PrismMetroSample.Shell.ViewModels
         {
 
             _paientListRegion = RegionMannager.Regions[RegionNames.PatientListRegion];
-            _patientListView = CommonServiceLocator.ServiceLocator.Current.GetInstance<PatientList>();
+            _patientListView = ContainerLocator.Current.Resolve<PatientList>();
             _paientListRegion.Add(_patientListView);
 
             var uniformContentRegion = RegionMannager.Regions["UniformContentRegion"];
-            var regionAdapterView1 = CommonServiceLocator.ServiceLocator.Current.GetInstance<RegionAdapterView1>();
+            var regionAdapterView1 = ContainerLocator.Current.Resolve<RegionAdapterView1>();
             uniformContentRegion.Add(regionAdapterView1);
-            var regionAdapterView2 = CommonServiceLocator.ServiceLocator.Current.GetInstance<RegionAdapterView2>();
+            var regionAdapterView2 = ContainerLocator.Current.Resolve<RegionAdapterView2>();
             uniformContentRegion.Add(regionAdapterView2);
 
             _medicineListRegion = RegionMannager.Regions[RegionNames.MedicineMainContentRegion];

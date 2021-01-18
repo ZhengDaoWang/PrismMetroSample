@@ -7,7 +7,7 @@
         xmlns:region="clr-namespace:PrismMetroSample.Infrastructure.Constants;assembly=PrismMetroSample.Infrastructure"
         mc:Ignorable="d"
         xmlns:prism="http://prismlibrary.com/"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
          Height="600" Width="400" prism:ViewModelLocator.AutoWireViewModel="True" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
         Icon="pack://application:,,,/PrismMetroSample.Infrastructure;Component/Assets/Photos/Home, homepage, menu.png" >
     <i:Interaction.Triggers>
