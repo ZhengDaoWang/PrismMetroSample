@@ -6,7 +6,6 @@ using PrismMetroSample.Infrastructure.Constants;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Unity;
 
 namespace PrismMetroSample.PatientModule
 {
