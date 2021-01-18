@@ -12,11 +12,6 @@
     <UserControl.Resources>
         <conveter:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
     </UserControl.Resources>
-    <i:Interaction.Triggers>
-        <i:EventTrigger>
-            <i:InvokeCommandAction Command="{Binding LoadingCommand}"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>

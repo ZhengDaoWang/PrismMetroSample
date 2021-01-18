@@ -19,6 +19,7 @@
   <ItemGroup>
     <PackageReference Include="MahApps.Metro" Version="2.0.0-alpha0660" />
     <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
+    <PackageReference Include="Unity.Interception" Version="5.11.1" />
   </ItemGroup>
 
   <ItemGroup>

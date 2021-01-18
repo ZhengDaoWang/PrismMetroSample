@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using PrismMetroSample.Infrastructure.Interceptor.HandlerAttributes;
 
 namespace PrismMetroSample.Infrastructure.Services
 {

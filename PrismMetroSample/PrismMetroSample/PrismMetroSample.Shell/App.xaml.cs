@@ -10,6 +10,11 @@ using System.Windows.Controls.Primitives;
 using PrismMetroSample.Infrastructure.CustomerRegionAdapters;
 using PrismMetroSample.Shell.Views.Dialogs;
 using PrismMetroSample.Shell.ViewModels.Dialogs;
+using Unity;
+using Unity.Interception;
+using Unity.Interception.Interceptors.InstanceInterceptors.InterfaceInterception;
+using Unity.Interception.ContainerIntegration;
+using Unity.Interception.PolicyInjection;
 
 namespace PrismMetroSample.Shell
 {
@@ -31,10 +36,12 @@ namespace PrismMetroSample.Shell
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            //注册服务
-            containerRegistry.Register<IMedicineSerivce, MedicineSerivce>();
-            containerRegistry.Register<IPatientService, PatientService>();
-            containerRegistry.Register<IUserService, UserService>();
+            var container = PrismIocExtensions.GetContainer(containerRegistry);
+            container.AddNewExtension<Interception>()//add Extension Aop
+                //注册服务和添加显示拦截
+                .RegisterType<IMedicineSerivce, MedicineSerivce>(new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>())
+                .RegisterType<IPatientService, PatientService>(new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>())
+                .RegisterType<IUserService, UserService>(new Interceptor<InterfaceInterceptor>(), new InterceptionBehavior<PolicyInjectionBehavior>());
 
             //注册全局命令
             containerRegistry.RegisterSingleton<IApplicationCommands, ApplicationCommands>();
