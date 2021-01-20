@@ -8,6 +8,9 @@ using System;
 using Prism;
 using System.Windows;
 using Prism.Services.Dialogs;
+using Prism.Commands;
+using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace PrismMetroSample.MedicineModule.ViewModels
 {
@@ -25,12 +28,16 @@ namespace PrismMetroSample.MedicineModule.ViewModels
 
         #region Properties
 
-        private ObservableCollection<Medicine> _allMedicines;
+
+        private ObservableCollection<Medicine> _allMedicines=new ObservableCollection<Medicine>();
+
         public ObservableCollection<Medicine> AllMedicines
         {
             get { return _allMedicines; }
-            set { SetProperty(ref _allMedicines, value); }
+            set { _allMedicines = value; }
         }
+
+
 
         bool _isActive;
         public bool IsActive
@@ -55,6 +62,26 @@ namespace PrismMetroSample.MedicineModule.ViewModels
 
         #region Commands
 
+        private DelegateCommand _loadCommand;
+        public DelegateCommand LoadCommand =>
+            _loadCommand ?? (_loadCommand = new DelegateCommand(ExecuteLoadCommand));
+
+         void ExecuteLoadCommand()
+        {
+            //TaskExtension for async void Command 
+            ALongTask().Await( completedCallback:() =>
+            {
+                this.AllMedicines.AddRange(_medicineSerivce.GetAllMedicines());
+            }, errorCallback:null,configureAwait:true);
+
+
+        }
+
+        private async Task ALongTask()
+        {
+            await Task.Delay(3000);//模拟耗时操作
+            Debug.WriteLine("耗时操作完成");
+        }
 
         #endregion
 
@@ -70,9 +97,9 @@ namespace PrismMetroSample.MedicineModule.ViewModels
         {
             _medicineSerivce = medicineSerivce;
             _ea = ea;
-            _dialogService = dialogService;
-            this.AllMedicines = new ObservableCollection<Medicine>(_medicineSerivce.GetAllMedicines());
+            _dialogService = dialogService;           
             _ea.GetEvent<MedicineSentEvent>().Subscribe(MedicineMessageReceived);//订阅事件
+            this.AllMedicines = new ObservableCollection<Medicine>();
         }
 
         /// <summary>

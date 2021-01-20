@@ -4,7 +4,9 @@ using Prism.Regions;
 using Prism.Services.Dialogs;
 using PrismMetroSample.Infrastructure.Constants;
 using PrismMetroSample.Infrastructure.Services;
+using System.Diagnostics;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace PrismMetroSample.Shell.ViewModels.Login
@@ -41,6 +43,16 @@ namespace PrismMetroSample.Shell.ViewModels.Login
             IRegion region = _regionManager.Regions[RegionNames.LoginContentRegion];
             region.RequestNavigate("LoginMainContent", NavigationCompelted);
             Global.AllUsers = _userService.GetAllUsers();
+        }
+
+        public async Task TestTask()
+        {
+            await Task.Run(() =>
+            {
+                Thread.Sleep(6000);
+                Debug.WriteLine("test");
+            });
+  
         }
 
         #endregion
