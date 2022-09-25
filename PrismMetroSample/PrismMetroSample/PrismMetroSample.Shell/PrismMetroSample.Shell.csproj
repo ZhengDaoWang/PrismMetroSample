@@ -1,17 +1,17 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Prism.Unity" Version="8.0.0.1909" />
+    <PackageReference Include="Prism.Unity" Version="8.1.97" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PrismMetroSample.Infrastructure\PrismMetroSample.Infrastructure.csproj" />
+    
     <ProjectReference Include="..\PrismMetroSample.MedicineModule\PrismMetroSample.MedicineModule.csproj" />
     <ProjectReference Include="..\PrismMetroSample.PatientModule\PrismMetroSample.PatientModule.csproj" />
     <ProjectReference Include="..\PrismMetroSample.Styling\PrismMetroSample.Styling.csproj" />
